@@ -99,7 +99,7 @@ function build_bazel()
 
   cd $WORKDIR
 
-  BAZEL_VERSION="3.1.0"
+  # BAZEL_VERSION="3.1.0"
   if [ ! -f bazel-${BAZEL_VERSION}-dist.zip ]; then
     #wget --no-check-certificate https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-dist.zip
     curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1Sv3lhMg0WKcOOVneYwYv32Rdw8bzXR6n" > /dev/null
@@ -186,19 +186,19 @@ function download_tensorflow()
   git config user.email "temp@example.com"
   git config user.name "temp"
 
-  if [ "$TF_PATCH" == "yes" ]; then
-     tf_patch || {
-       log_failure_msg "error when apply patch"
-       exit 1
-     }
-  fi
+  # if [ "$TF_PATCH" == "yes" ]; then
+  #    tf_patch || {
+  #      log_failure_msg "error when apply patch"
+  #      exit 1
+  #    }
+  # fi
 
-  if [ ! -z "$CROSSTOOL_DIR" ] && [ ! -z "$CROSSTOOL_NAME" ]; then
-    tf_toolchain_patch "$CROSSTOOL_NAME" "$CROSSTOOL_DIR" "$CROSSTOOL_ROOT" "$CROSSTOOL_EXTRA_INCLUDE" || {
-      log_failure_msg "error when apply crosstool patch"
-      exit 1
-    }
-  fi
+  # if [ ! -z "$CROSSTOOL_DIR" ] && [ ! -z "$CROSSTOOL_NAME" ]; then
+  #   tf_toolchain_patch "$CROSSTOOL_NAME" "$CROSSTOOL_DIR" "$CROSSTOOL_ROOT" "$CROSSTOOL_EXTRA_INCLUDE" || {
+  #     log_failure_msg "error when apply crosstool patch"
+  #     exit 1
+  #   }
+  # fi
 
   git add .
   git commit -m "temp modifications"
