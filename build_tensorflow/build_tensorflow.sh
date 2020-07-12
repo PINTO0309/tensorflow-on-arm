@@ -99,8 +99,12 @@ function build_bazel()
 
   cd $WORKDIR
 
+  BAZEL_VERSION="3.1.0"
   if [ ! -f bazel-${BAZEL_VERSION}-dist.zip ]; then
-    wget --no-check-certificate https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-dist.zip
+    #wget --no-check-certificate https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-dist.zip
+    curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1Sv3lhMg0WKcOOVneYwYv32Rdw8bzXR6n" > /dev/null
+    CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
+    curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1Sv3lhMg0WKcOOVneYwYv32Rdw8bzXR6n" -o bazel-${BAZEL_VERSION}-dist.zip
   fi
 
   if [ ! -d bazel-${BAZEL_VERSION} ]; then
