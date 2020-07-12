@@ -143,10 +143,13 @@ function toolchain()
 
   [ ! -d "${CROSSTOOL_DIR}/${CROSSTOOL_NAME}/bin/" ] && {
     mkdir -p ${WORKDIR}/toolchain/
-    wget --no-check-certificate $CROSSTOOL_URL -O toolchain.tar.xz || {
-      log_failure_msg "error when download crosstool"
-      exit 1
-    }
+    # wget --no-check-certificate $CROSSTOOL_URL -O toolchain.tar.xz || {
+    #   log_failure_msg "error when download crosstool"
+    #   exit 1
+    # }
+    curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1U3PSXeIbTmpAoSTZ3z8gU074dOBevWkh" > /dev/null
+    CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
+    curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1U3PSXeIbTmpAoSTZ3z8gU074dOBevWkh" -o toolchain.tar.xz
     tar xf toolchain.tar.xz -C ${WORKDIR}/toolchain/ || {
       log_failure_msg "error when extract crosstool"
       exit 1
