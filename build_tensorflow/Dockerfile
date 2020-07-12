@@ -2,7 +2,7 @@ FROM debian:buster
 
 RUN dpkg --add-architecture armhf && dpkg --add-architecture arm64 \
     && apt-get update && apt-get install -y \
-        openjdk-11-jdk automake autoconf libpng-dev \
+        openjdk-11-jdk automake autoconf libpng-dev nano \
         curl zip unzip libtool swig zlib1g-dev pkg-config git wget xz-utils \
         python3-numpy python3-pip python3-mock \
         libpython3-dev libpython3-all-dev \
