@@ -12,7 +12,7 @@ RUN dpkg --add-architecture armhf && dpkg --add-architecture arm64 \
 RUN pip3 install -U --user keras_applications==1.0.8 --no-deps \
     && pip3 install -U --user keras_preprocessing==1.1.0 --no-deps \
     && pip3 install -U h5py==2.9.0 \
-    && pip3 install -U six numpy wheel mock \
+    && pip3 install -U six wheel mock \
     && ldconfig
 
 RUN /bin/bash -c "update-alternatives --install /usr/bin/python python /usr/bin/python3 150"
