@@ -16,8 +16,8 @@ RUN pip3 install -U --user keras_applications==1.0.5 --no-deps \
 RUN /bin/bash -c "update-alternatives --install /usr/bin/python python /usr/bin/python3 150"
 
 WORKDIR /root
-RUN git clone https://github.com/lhelontra/tensorflow-on-arm/
+RUN git clone https://github.com/PINTO0309/tensorflow-on-arm/
 
 WORKDIR /root/tensorflow-on-arm/build_tensorflow/
-RUN git checkout v2.1.0
+RUN git checkout v2.3.0-rc1
 CMD ["/bin/bash"]
