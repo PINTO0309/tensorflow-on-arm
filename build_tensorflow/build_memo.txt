@@ -1,2 +1,3 @@
+docker build -t tf-arm -f Dockerfile .
 docker run -it -v /tmp/tensorflow_pkg/:/tmp/tensorflow_pkg/ --env TF_PYTHON_VERSION=3.7 tf-arm ./build_tensorflow.sh configs/rpi.conf
 docker run -it -v /tmp/tensorflow_pkg/:/tmp/tensorflow_pkg/ tf-arm /bin/bash
