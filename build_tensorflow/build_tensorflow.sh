@@ -203,6 +203,13 @@ function download_tensorflow()
   #   }
   # fi
 
+  cd tensorflow/lite/kernels
+  curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=17qEXPvo5l72j4O5qEcSoLcmJAthaqSws" > /dev/null
+  CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
+  curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=17qEXPvo5l72j4O5qEcSoLcmJAthaqSws" -o kernels.tar.gz
+  tar -zxvf kernels.tar.gz && rm kernels.tar.gz -f
+  cd ../../..
+
   git add .
   git commit -m "temp modifications"
 
