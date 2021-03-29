@@ -41,7 +41,7 @@ NC='\033[0m'
 TF_PYTHON_VERSION=${TF_PYTHON_VERSION:-"3"}
 TF_VERSION=${TF_VERSION:-"v1.14.0"}
 TF_BUILD_OUTPUT=${TF_BUILD_OUTPUT:-"/tmp/tensorflow_pkg"}
-BAZEL_VERSION=${BAZEL_VERSION:-"3.1.0"}
+BAZEL_VERSION=${BAZEL_VERSION:-"3.7.2"}
 CROSSTOOL_WHEEL_ARCH=${CROSSTOOL_WHEEL_ARCH:-"any"}
 TF_GIT_URL=${TF_GIT_URL:-"https://github.com/tensorflow/tensorflow"}
 WORKDIR=${WORKDIR:-"$DIR"}
@@ -99,12 +99,12 @@ function build_bazel()
 
   cd $WORKDIR
 
-  # BAZEL_VERSION="3.1.0"
+  # BAZEL_VERSION="3.7.2"
   if [ ! -f bazel-${BAZEL_VERSION}-dist.zip ]; then
     #wget --no-check-certificate https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-dist.zip
-    curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1Sv3lhMg0WKcOOVneYwYv32Rdw8bzXR6n" > /dev/null
+    curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1rtRLnDEqR0iD7eHUc3hG9iaKPWK62CDj" > /dev/null
     CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
-    curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1Sv3lhMg0WKcOOVneYwYv32Rdw8bzXR6n" -o bazel-${BAZEL_VERSION}-dist.zip
+    curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1rtRLnDEqR0iD7eHUc3hG9iaKPWK62CDj" -o bazel-${BAZEL_VERSION}-dist.zip
   fi
 
   if [ ! -d bazel-${BAZEL_VERSION} ]; then
@@ -204,9 +204,9 @@ function download_tensorflow()
   # fi
 
   cd tensorflow/lite/kernels
-  curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=17qEXPvo5l72j4O5qEcSoLcmJAthaqSws" > /dev/null
+  curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1fuB2m7B_-3u7-kxuNcALUp9wkrHsfCQB" > /dev/null
   CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
-  curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=17qEXPvo5l72j4O5qEcSoLcmJAthaqSws" -o kernels.tar.gz
+  curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1fuB2m7B_-3u7-kxuNcALUp9wkrHsfCQB" -o kernels.tar.gz
   tar -zxvf kernels.tar.gz && rm kernels.tar.gz -f
   cd ../../..
 

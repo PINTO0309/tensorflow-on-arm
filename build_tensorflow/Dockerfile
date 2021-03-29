@@ -13,7 +13,7 @@ RUN pip3 install "numpy<1.19.0"
 
 RUN pip3 install -U --user keras_applications==1.0.8 --no-deps \
     && pip3 install -U --user keras_preprocessing==1.1.0 --no-deps \
-    && pip3 install -U h5py==2.9.0 \
+    && pip3 install -U h5py==3.1.0 \
     && pip3 install -U six wheel mock \
     && ldconfig
 
@@ -23,5 +23,5 @@ WORKDIR /root
 RUN git clone https://github.com/PINTO0309/tensorflow-on-arm/
 
 WORKDIR /root/tensorflow-on-arm/build_tensorflow/
-RUN git checkout v2.4.0
+RUN git checkout v2.5.0-rc0
 CMD ["/bin/bash"]
