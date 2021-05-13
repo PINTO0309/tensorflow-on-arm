@@ -9,7 +9,7 @@ RUN dpkg --add-architecture armhf && dpkg --add-architecture arm64 \
         libpython3-dev:armhf libpython3-all-dev:armhf \
         libpython3-dev:arm64 libpython3-all-dev:arm64 g++ gcc
 
-RUN pip3 install "numpy<1.19.0"
+RUN pip3 install numpy --upgrade
 
 RUN pip3 install -U --user keras_applications==1.0.8 --no-deps \
     && pip3 install -U --user keras_preprocessing==1.1.0 --no-deps \
@@ -23,5 +23,5 @@ WORKDIR /root
 RUN git clone https://github.com/PINTO0309/tensorflow-on-arm/
 
 WORKDIR /root/tensorflow-on-arm/build_tensorflow/
-RUN git checkout v2.5.0-rc0
+RUN git checkout v2.5.0
 CMD ["/bin/bash"]
