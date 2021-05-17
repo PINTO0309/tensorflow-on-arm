@@ -23,5 +23,5 @@ WORKDIR /root
 RUN git clone https://github.com/PINTO0309/tensorflow-on-arm/
 
 WORKDIR /root/tensorflow-on-arm/build_tensorflow/
-RUN git checkout v2.5.0
+RUN git checkout v2.5.0-numpy1195
 CMD ["/bin/bash"]
